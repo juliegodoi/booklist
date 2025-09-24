@@ -3,16 +3,10 @@ const cors = require('cors');
 const routes = require('./src/routes');
 
 const app = express();
-
-// habilita CORS para todas as origens
-app.use(cors());
-
-// para aceitar JSON no body
+app.use(cors({ origin: 'http://localhost:3000' })); // front rodando em 3000
 app.use(express.json());
 
 app.use('/api', routes);
 
-const PORT = 4000;
-app.listen(PORT, () => {
-    console.log(`Servidor rodando em http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => console.log(`API rodando em http://localhost:${PORT}`));

@@ -1,11 +1,13 @@
 const express = require('express');
-const router = express.Router();
-const livroController = require('../controllers/livroController');
+const controller = require('../controllers/livroController');
 
-// Rotas CRUD
-router.get('/livros', livroController.listar);
-router.post('/livros', livroController.criar);
-router.put('/livros/:id', livroController.atualizar);
-router.delete('/livros/:id', livroController.remover);
+const router = express.Router();
+
+// endpoints
+router.get('/livros', controller.listar);
+router.get('/livros/:id', controller.buscarPorId);
+router.post('/livros', controller.criar);
+router.put('/livros/:id', controller.atualizar);
+router.delete('/livros/:id', controller.remover);
 
 module.exports = router;
